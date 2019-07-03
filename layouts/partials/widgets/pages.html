@@ -69,6 +69,18 @@
   <div class="col-12 col-lg-4 section-heading">
     <h1>{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
     {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+
+    {{ if eq $items_type "publication" }}
+      {{ if gt $count $items_count }}
+      <div class="see-all">
+        <a href="{{ $archive_page.RelPermalink }}">
+          {{ i18n $i18n | default "See all" }}
+          <i class="fas fa-angle-right"></i>
+        </a>
+      </div>
+      {{ end }}
+    {{ end }}
+
   </div>
   <div class="col-12 col-lg-8">
 

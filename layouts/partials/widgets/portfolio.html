@@ -30,8 +30,6 @@
   <div>
 {{ end }}
 
-    {{ with $st.Content }}<p>{{ . }}</p>{{ end }}
-
     {{ if $st.Params.content.filter_button }}
 
       {{ $filter_default := default (int $st.Params.content.filter_default) 0 }}
@@ -83,6 +81,8 @@
         {{ end }}
       {{ end }}
     </div>
+
+    {{ with $st.Content }}<p>{{ . }}</p>{{ end }}
 
   </div>
 </div>
