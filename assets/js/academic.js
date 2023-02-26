@@ -27,15 +27,21 @@
     target = (typeof target === 'undefined' || typeof target === 'object') ? decodeURIComponent(window.location.hash) : target;
     // Escape special chars from IDs, such as colons found in Markdown footnote links.
     target = '#' + $.escapeSelector(target.substring(1));  // Previously, `target = target.replace(/:/g, '\\:');`
-
+    
     // If target element exists, scroll to it taking into account fixed navigation bar offset.
     if($(target).length) {
-      $('body').addClass('scrolling');
       $('html, body').animate({
-        scrollTop: $(target).offset().top - navbar_offset
-      }, 600, function () {
-        $('body').removeClass('scrolling');
+        'scrollTop': $(target).offset().top - navbar_offset
+      }, 0, function() {
       });
+
+      // $('body').addClass('scrolling');
+      // $('html, body').animate({
+      //   scrollTop: $(target).offset().top - navbar_offset
+      // }, 600, function () {
+      //   console.log("test2")
+      //   $('body').removeClass('scrolling');
+      // });
     }else{
       console.warn('Cannot scroll to '+target+'. ID not found!');
     }
@@ -91,7 +97,7 @@
     event.preventDefault();
     $('html, body').animate({
       'scrollTop': 0
-    }, 800, function() {
+    }, 0, function() {
       window.location.hash = "";
     });
   });
