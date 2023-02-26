@@ -179,7 +179,8 @@
   text-decoration: none;
 }
 
-.docs-toc-item.active {
+// .docs-toc-item.active {
+.docs-toc-item {
   margin-bottom: 1rem;
 }
 
@@ -216,6 +217,7 @@
 #TableOfContents ul,
 ul.toc-top {
   padding-left: 0;
+  margin-bottom: 0.2rem;
 }
 
 #TableOfContents ul ul {
@@ -226,6 +228,7 @@ ul.toc-top {
   display: block;
 }
 
+#TableOfContents a,
 #TableOfContents li a,
 .toc-top li a {
   display: block;
@@ -234,6 +237,12 @@ ul.toc-top {
   font-size: 0.7rem;
 }
 
+#TableOfContents a {
+  padding: .125rem 1rem;
+  font-size: 1rem;
+}
+
+#TableOfContents a:hover,
 #TableOfContents li a:hover,
 .toc-top li a:hover {
   color: $sta-primary;
@@ -241,6 +250,7 @@ ul.toc-top {
 }
 
 /* ScrollSpy active link style. */
+#TableOfContents a.active,
 #TableOfContents li a.active {
   color: $sta-primary;
   font-weight: 700;
