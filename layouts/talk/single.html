@@ -36,6 +36,7 @@
     </div>
     <div class="d-md-none space-below"></div>
 
+    {{ if .Params.event }}
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
@@ -51,6 +52,7 @@
       <div class="col-md-1"></div>
     </div>
     <div class="d-md-none space-below"></div>
+    {{ end }}
 
     {{ with .Params.location }}
     <div class="row">
@@ -71,6 +73,13 @@
     <div class="article-style">
       {{ .Content }}
     </div>
+
+    {{ if .Params.bio }}
+    <h3>{{ i18n "bio" }}</h3>
+    <p class="pub-abstract" itemprop="text">{{ .Params.bio | markdownify | emojify }}</p>
+    {{ else }}
+    <br>
+    {{ end }}
 
     {{ partial "tags.html" . }}
     {{ partial "page_author.html" . }}

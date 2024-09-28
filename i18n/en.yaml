@@ -46,6 +46,9 @@
 - id: btn_video
   translation: Video
 
+- id: btn_website
+  translation: Website
+
 - id: btn_code
   translation: Code
 
@@ -123,6 +126,9 @@
 
 - id: abstract
   translation: Abstract
+
+- id: bio
+  translation: Bio
 
 - id: publication
   translation: Publication
