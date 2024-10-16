@@ -33,6 +33,10 @@
     {{ if $item.Params.authors }}
     <div itemprop="author">
       {{ partial "page_metadata_authors" $item }}
+      {{ with $item.Params.affiliation }}
+      <span class="middot-divider"></span>
+      <span itemprop="location">{{ . }}</span>
+      {{ end }}
     </div>
     {{ end }}
     <span itemprop="startDate">
