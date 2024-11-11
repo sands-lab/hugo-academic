@@ -72,6 +72,15 @@
 
     <div class="article-style">
       {{ .Content }}
+
+      {{ if strings.HasPrefix .RelPermalink "/internal" }}
+        {{ with .Param "internal.url_recording" }}
+          {{ $videoID := replaceRE "^.*/" "" . }}
+          <div>
+            <iframe width="100%" height="400" src="http://www.youtube.com/embed/{{ $videoID }}" frameborder="0" allowfullscreen></iframe>
+          </div>
+        {{end}}
+      {{end}}
     </div>
 
     {{ if .Params.bio }}

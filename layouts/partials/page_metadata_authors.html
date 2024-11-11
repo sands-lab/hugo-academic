@@ -1,6 +1,7 @@
 {{/* Display author list. */}}
 
 {{ $taxonomy := "authors" }}
+{{ $page_scope := . }}
 {{ with .Param $taxonomy }}
   {{ range $index, $value := . }}
     {{- $profile_page := site.GetPage (printf "/%s/%s" $taxonomy (. | urlize)) -}}
@@ -9,6 +10,10 @@
     <span itemprop="author name" itemtype="http://schema.org/Person">
       {{- with $profile_page -}}
         <a href="{{.RelPermalink}}">{{$name}}</a>
+        {{- with $page_scope.Params.affiliation -}}
+          <span class="middot-divider"></span>
+          <span itemprop="location">{{ . }}</span>
+        {{- end -}}
       {{- else -}}
         {{$name}}
       {{- end -}}

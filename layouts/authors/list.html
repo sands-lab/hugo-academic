@@ -20,13 +20,21 @@
     {{end}}
 
     {{ $query := where .Pages ".IsNode" false }}
+    {{/* Remove internal pages */}}
+    {{ $f_query := slice }}
+    {{ range $query }}
+      {{ if not (strings.HasPrefix .RelPermalink "/internal") }}
+        {{ $f_query = $f_query | append . }}
+      {{ end }}
+    {{ end }}
+
     {{ $count := len $query }}
     {{ if $count }}
     <div class="article-widget">
       <div class="hr-light"></div>
       <h3>{{ i18n "user_profile_latest" | default "Latest" }}</h3>
       <ul>
-        {{ range $query }}
+        {{ range $f_query }}
         <li>
           <a href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
