@@ -9,13 +9,15 @@
     {{- if gt $index 0 }}, {{ end -}}
     <span itemprop="author name" itemtype="http://schema.org/Person">
       {{- with $profile_page -}}
-        <a href="{{.RelPermalink}}">{{$name}}</a>
-        {{- with $page_scope.Params.affiliation -}}
-          <span class="middot-divider"></span>
-          <span itemprop="location">{{ . }}</span>
+        {{- if $page_scope.Params.no_author_link -}}
+          {{$name}}
+        {{- else -}}
+          <a href="{{.RelPermalink}}">{{$name}}</a>
         {{- end -}}
-      {{- else -}}
-        {{$name}}
+      {{- end -}}
+      {{- with $page_scope.Params.affiliation -}}
+        <span class="middot-divider"></span>
+        <span itemprop="affiliation">{{ . }}</span>
       {{- end -}}
     </span>
   {{- end -}}

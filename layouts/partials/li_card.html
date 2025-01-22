@@ -32,7 +32,11 @@
   <div class="article-metadata">
     {{ if $item.Params.authors }}
     <div itemprop="author">
-      {{ partial "page_metadata_authors" $item }}
+      {{- if gt $item.Params.authors 1 }}
+        Authors: {{ partial "page_metadata_authors" $item }}
+      {{ else }}
+        Author: {{ partial "page_metadata_authors" $item }}
+      {{- end -}}
     </div>
     {{ end }}
     <span itemprop="startDate">

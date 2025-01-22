@@ -1,0 +1,19 @@
+{{- define "main" -}}
+
+{{ partial "page_header.html" . }}
+
+<div class="universal-wrapper">
+  {{ with .Content }}
+  <div class="article-style" itemprop="articleBody">{{ . }}</div>
+  {{ end }}
+
+  {{ $paginator := .Paginate .Data.Pages.Reverse }}
+  {{ range $paginator.Pages }}
+    {{ partial "li_card" . }}
+  {{ end }}
+
+  {{ partial "pagination" . }}
+</div>
+
+{{- end -}}
+
