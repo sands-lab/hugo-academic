@@ -7,7 +7,15 @@
   <div class="article-style" itemprop="articleBody">{{ . }}</div>
   {{ end }}
 
-  {{ $paginator := .Paginate .Data.Pages.Reverse }}
+  {{ $pages := .Data.Pages }}
+  {{ if .Params.sort_date_asc }}
+    {{ .Scratch.Set "sorted_pages" (sort $pages "Date" "asc") }}
+  {{ else }}
+    {{ .Scratch.Set "sorted_pages" (sort $pages "Date" "desc") }}
+  {{ end }}
+  {{ $sorted_pages := .Scratch.Get "sorted_pages" }}
+  {{ $paginator := .Paginate $sorted_pages }}
+
   {{ range $paginator.Pages }}
     {{ partial "li_card" . }}
   {{ end }}
