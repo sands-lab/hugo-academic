@@ -33,9 +33,9 @@
     {{ if $item.Params.authors }}
     <div itemprop="author">
       {{- if gt $item.Params.authors 1 }}
-        Authors: {{ partial "page_metadata_authors" $item }}
+        Speakers: {{ partial "page_metadata_authors" $item }}
       {{ else }}
-        Author: {{ partial "page_metadata_authors" $item }}
+        Speaker: {{ partial "page_metadata_authors" $item }}
       {{- end -}}
     </div>
     {{ end }}
