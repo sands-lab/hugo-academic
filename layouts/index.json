@@ -28,10 +28,11 @@
     {{/* Correct the title and URL for author profile pages. */}}
     {{- if eq .Section "authors" -}}
       {{- $title = .Params.name -}}
-      {{- $username := path.Base (path.Split .Path).Dir -}}
-      {{- with site.GetPage (printf "/authors/%s" $username) -}}
-        {{- $permalink = .Permalink -}}
-        {{- $rel_permalink = .RelPermalink -}}
+      {{- with .File -}}
+        {{- with site.GetPage (printf "/authors/%s" .ContentBaseName) -}}
+          {{- $permalink = .Permalink -}}
+          {{- $rel_permalink = .RelPermalink -}}
+        {{- end -}}
       {{- end -}}
     {{- else -}}
       {{/* Include a user's display name rather than username where possible. */}}
